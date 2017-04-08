@@ -22,13 +22,32 @@ multi = 3 * 2
 
 divide = 10 / 2
 
-print("%d \t%d \t%d \t%d" % (plus, minus, multi, divide))
+t = 4 % 3  # 取余运算
+print(t)
+
+# Python 3对这些需要好好看看 怎么处理的
+# todo
+mod = 10 / 3  # 3.
+mod_1 = 10.01 / 3
+# 指数运算
+square = 3.2 ** 2
+
+print("%d \t%d \t%d \t%d \t%d \t%d \t%s" % (plus, minus, multi, divide, mod, mod_1, square))
+
+# todo  这个2到3之后就变了
+ceilingDivide = 10 / 3
+print("---地板除法---")
+print(ceilingDivide)
+realDivide = 10 / 3
+print("---浮点除法---")
+print(realDivide)
 
 # 比较 和 逻辑运算符 compare & logic
 
 print("\n------比较和逻辑运算符----\n")
 equal = 3 == 3
-print(equal)
+# not
+print(not equal)
 
 notequal = 3 != 2  # Python 已经 弃用了  <>
 print(notequal)
@@ -40,6 +59,9 @@ right = less and bigger
 print(right)
 wrong = notequal or bigger
 print(wrong)
+# 支持这样的逻辑运算
+
+print(3 < 4 < 5)
 # ------
 
 n = 1
@@ -91,10 +113,81 @@ print(python[1:4])
 
 print(1)
 
-# 数组和元组 array and tunle  同样支持切片运算符
+# 数组和元组 array and tuple  同样支持切片运算符
 print("\n----------数组和元组-----------\n")
-intlist = [12, 16, 20]
-print(intlist)
+intList = [12, 16, 20]
+print(intList)
 mixList = ["a", n, 1243]
 print(mixList)
 print(mixList[0])
+
+mixTuple = (intList, mixList, "和啊哈", 11)
+print(mixTuple)
+print(mixTuple[-1])
+
+# 字典 哈希表 内建数据类型
+
+dict = {"a": "abc", "b": "123"}
+
+print(dict)
+
+print(dict["a"])
+dict['a'] = 4321
+
+# for
+print(dict)
+
+for key in dict:
+    print("-----")
+    print(key)
+    print(dict[key])
+
+boolVal_0 = 1 == 1
+boolVal_1 = 1 >= 2
+boolVal_2 = 3 >= 2
+
+if boolVal_0:
+    print(1)
+elif boolVal_2:
+    print(2)
+else:
+    print(3)
+
+j = 5
+
+while j >= 1:
+    j = j - 1
+    # 为什么 不能用--j  j--  ??
+
+    print("j的值 %d" % (j))
+
+# foreach
+
+print('I like to use the Internet for')
+for item in ["email", 'game', "overwatch"]:
+    print(item, )
+
+# len and range function
+print("---------------range len function ------------")
+game = "over watch"
+
+for index in (range(len(game))):
+    print(game[index])
+
+for i, ch in enumerate(game):  # i 代表 index  ch 代表  字符
+
+
+    print(i,end="")
+    print(ch,end="")
+
+# 列表解析
+
+squared = [x ** 2 for x in range(4) if not x % 2]
+
+# 文件和内建函数
+
+fileName = input("enter the real path")
+fileDescription = open(fileName, "r")
+for eachLine in fileDescription:
+    print(eachLine, )
+fileDescription.close()
