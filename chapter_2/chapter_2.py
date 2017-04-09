@@ -2,6 +2,8 @@ import sys
 
 val = abs(-4)
 print("val 值 %d" % val)
+#2个方法一模一样
+print("val 值 "+str(val))
 
 # password = input("enter your password")
 
