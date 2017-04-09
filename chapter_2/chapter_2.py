@@ -1,3 +1,5 @@
+import sys
+
 val = abs(-4)
 print("val 值 %d" % val)
 
@@ -45,20 +47,29 @@ print(realDivide)
 # 比较 和 逻辑运算符 compare & logic
 
 print("\n------比较和逻辑运算符----\n")
+
 equal = 3 == 3
 # not
 print(not equal)
 
 notequal = 3 != 2  # Python 已经 弃用了  <>
 print(notequal)
+
 bigger = 3 >= 2
 print(bigger)
+
 less = 3 <= 2
 print(less)
+
 right = less and bigger
 print(right)
+
 wrong = notequal or bigger
 print(wrong)
+
+print("字符和数字比较")
+print("2.0" == 2.0)
+
 # 支持这样的逻辑运算
 
 print(3 < 4 < 5)
@@ -175,19 +186,87 @@ for index in (range(len(game))):
     print(game[index])
 
 for i, ch in enumerate(game):  # i 代表 index  ch 代表  字符
-
-
-    print(i,end="")
-    print(ch,end="")
+    print(i, end="")
+    print(ch, end="")
 
 # 列表解析
 
 squared = [x ** 2 for x in range(4) if not x % 2]
 
 # 文件和内建函数
+#
+# fileName = input("enter the real path")
+# fileDescription = open(fileName, "r")
+# for eachLine in fileDescription:
+#     print(eachLine, )
+# fileDescription.close()
 
-fileName = input("enter the real path")
-fileDescription = open(fileName, "r")
-for eachLine in fileDescription:
-    print(eachLine, )
-fileDescription.close()
+# python 3 异常处理
+try:
+    mixTuple[1] = 6
+except TypeError as error:
+    print(error, "哈哈")
+
+
+# 函数
+# def functionName():
+# 几乎  所有的数据类型均支持 + 运算符
+
+
+def addMe2Me(x, debug=True):
+    if (debug):
+        return 0
+    return (x + x)
+
+
+# 类
+print("---Python class ---")
+
+
+# object 作为Base class
+
+class Foo(object):
+    """my first python class """
+    version = 0.1  # class attribute
+
+    print("version")
+
+    # 特殊方法  一个实例被创建之后,会自动执行_init_方法 相当于 java 的 构造
+    # self 相当于 this 在 java
+
+    def __init__(self, nm="D.Wade"):
+        """class constructor """
+        self.version = 2.0
+        print("version")
+        print(self.version)
+
+    def show_name(self):
+        print("class name and attribute")
+        print(self.__class__.__name__)
+        print(self.__hash__())
+        print(self.__module__)
+
+
+print("--------foo class-------")
+foo = Foo()
+print(foo.version == 0.1)  # 字符串和数字是不一样的
+# 为什么 打印不出来了呢?
+
+print(int(foo))
+print(len(foo))
+print(str(foo))
+print(type(foo))
+
+# import module
+sys.stdout.write("import module --嘿嘿--")
+print(sys.version)
+print(sys.platform)
+
+# import chapter_1.chapter_1  # 如果是 import chapter_1就步行
+#
+# chapter_1.chapter_1.demo()
+
+# built_in function
+
+# dirAttribute = dir(chapter_1.chapter_1.demo())
+# print(dirAttribute)
