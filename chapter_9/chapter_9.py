@@ -1,4 +1,5 @@
 """文件 IO 操作"""
+from sys import *
 from string import Template
 from io import (__all__, SEEK_SET, SEEK_CUR, SEEK_END)
 
@@ -71,3 +72,24 @@ print(content)
 fobj.seek(-12, SEEK_CUR)
 content = tell_info.safe_substitute(header=fobj.tell())
 print(content)
+
+# 9.4 文件内建属性
+file_attribute = Template("file attrs show up: is closed ? ${closed}"
+                          "\nencode ? ${encode}"
+                          # "\nmode ? ${mode}" Python3已经没有了
+                          "\nname ? ${name}"
+                          "\nnewlines ? ${newlines}"
+                          # "\nsoftspace ? ${softspace}" python3 取消了
+                          )
+
+attrs = file_attribute.safe_substitute(closed=file.closed,
+                                       encode=file.encoding,
+                                       name=file.name,
+                                       newlines=file.newlines,
+                                       )
+
+print(attrs)
+
+
+# 9.9  永久存储模块
+# pickle marshall  dbm shelve 参见 P339页相关模块
