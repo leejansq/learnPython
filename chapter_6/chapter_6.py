@@ -14,6 +14,7 @@ python 的数组 到底是怎么建立的 \
 
 from string import Template
 import re  # 正则表达式
+import copy
 
 list1 = [1, 2, 3, 'a']
 
@@ -203,7 +204,123 @@ print('\u4e2d\u6587')
 
 print(b'ABC'.decode('ascii'))
 
-print(b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8'))
-
+print(b'\xe4\xb8\xad\xe6\x96\x87'.decode('utf-8', errors='strict'))
 
 # print(ur"hello\nworld") Python3 不再支持ur前缀了
+
+# python unichr()和 chr 统一成了 chr() 因为 utf-8 兼容 ASCII
+print(ord('a'))
+print(chr(97))
+
+# 字符串使用方法
+var = 'abcdefc'
+print(var.capitalize())
+print(var.center(11, "-"))
+print(var.count("c"))
+print('abc'.encode('utf-8'))
+
+print('abc'.endswith('a', 0, 2))
+
+print('abwhejsklw'.find('hs'))  # 找不到返回-1
+
+print('absbnd'.index('b'))  # 返回第一个字符串的位置
+
+print('1234'.isalnum())
+print('123ais'.isidentifier())
+
+var = '  1234abcdABC  '
+
+print(var.isdecimal())
+print(var.islower())
+print(var.isnumeric())
+print(var.isdecimal())
+print(var.istitle())
+print(var.lstrip())
+print(var.lower())
+print(var.rstrip())
+print(var.startswith('123'))
+print(var.zfill(12))
+
+print('av\nc')
+
+# -------------------------
+# 删除列表元素操作
+
+del [1, 2, 3, 4][1]
+[1, 2, 3, 4].remove(1)
+[1, 2, 3, 4].pop(1)
+
+# 按照索引逐个比较
+print([1, 2, 3, 'A'] < [2, 2, 3, "A"])
+print([1, 2, 3, 'a'] > [1, 2, 3, 'b'])
+# print([1, 2, 3, 4] > [1, 2, 'a', 0])
+
+
+print([1, 'a'] + ['b', 2])
+print([1, 'a'].extend(['b', 2]))
+
+var = [1, 2, 3, 4]
+var.extend(['a', 'c', 'd'])  # #不要写成这样 var =var.extend(['a','n']) 返回的对象是 None
+var.append(11111)
+print(var)
+
+print([i * 2 for i in [8, -2, 5]])
+print([i for i in range(8) if i % 2 == 0])
+# 字典序 暨 ASCII 值 而非 字母序
+array = sorted(['small', 'They'])
+print(array)
+
+# 虽然元组对象本身是不可变的，但这并不意味着元组包含的可变对象也不可变了
+t = (['xyz', 123], 23, -103.4)
+t[0][1] = 'ABCDEF'
+print(t)
+
+
+# 所有的多对象的，逗号分隔的，没有明确用符号定义的，
+# 比如说像用方括号表示列表和用 圆括号表示元组一样，等等这些集合默认的类型都是元组，默认都是元组!!!
+# 下列也是
+
+def foo():
+    return 12, 'abcd'
+
+
+print(type(foo()))
+
+# 比较下列区别
+
+print(type(('xyz')))
+print(type(('xyz',)))
+
+# Python 对象拷贝 浅拷贝和深度拷贝
+person = ['name', ['savings', 100.00]]
+
+hubby = person[:]
+wifey = list(person)
+
+print([id(x) for x in [person, hubby, wifey]])
+
+hubby[0] = 'joe'
+print(hubby)
+wifey[0] = 'jane'
+print(wifey)
+
+hubby[1][1] = 50.00
+
+print(hubby)
+print(wifey)  # 可变和不可变数据结构
+
+# 深度拷贝
+
+wifey = copy.deepcopy(person)
+hubby[1][1] = 30.00
+print(hubby)
+print(wifey)
+
+person = ['name', ('savings', 100.00)]
+newPerson = copy.deepcopy(person)
+# 在Python3 对元组的拷贝 是浅拷贝 话句话说 ['name', ('savings', 100.00)]
+# 这样的拷贝 依旧是个深度拷贝
+print(id(person))
+print(id(newPerson))
+print(person == newPerson)
+print(person is newPerson)
