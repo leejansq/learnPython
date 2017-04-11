@@ -106,7 +106,7 @@ print(n)
 
 floatNum = 3.12344
 intNum = 12
-bool = True
+var_bool = True
 longNum = 1234434566777
 complexNum = 1 - 2j
 

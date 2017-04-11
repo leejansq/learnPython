@@ -36,8 +36,8 @@ print(val1 is val2)
 
 print(type(foo))
 print(type(type(foo)))
-bool = not type(None)
-print(bool)
+var_bool = not type(None)
+print(var_bool)
 # print(None == False)
 
 if (None):
@@ -114,9 +114,9 @@ print(id(foo))
 
 # type 处理 好多代码已经被抛弃掉了
 
-bool = isinstance(foo, Foo)
+var_bool = isinstance(foo, Foo)
 print("-------哈哈----")
-print(bool)
+print(var_bool)
 
 # 文中提到的类型和类  需要区分下语义 todo
 
