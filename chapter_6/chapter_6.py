@@ -316,7 +316,7 @@ hubby[1][1] = 30.00
 print(hubby)
 print(wifey)
 
-person = ['name', ('savings', 100.00)]
+person = ('name', ('savings', 100.00))
 newPerson = copy.deepcopy(person)
 # 在Python3 对元组的拷贝 是浅拷贝 话句话说 ['name', ('savings', 100.00)]
 # 这样的拷贝 依旧是个深度拷贝
