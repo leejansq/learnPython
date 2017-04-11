@@ -72,6 +72,8 @@ print(2 in var_frozen_set)  # False
 
 var_set.update("anddipwq")
 print(var_set)
+var_set.discard("n")
+print(var_set)
 var_set.remove("a")
 print(var_set)
 var_set.pop()
@@ -82,16 +84,43 @@ var_set.add("$")
 print(var_set)
 
 var_set1 = set('rtyufghvb')
+print(var_set1)
 var_set2 = set('qwertyuiop')
+print(var_set2)
 var_set3 = set('qwertyuiop')
+print(var_set3)
 var_set4 = var_set1
+print(var_set4)
 var_set5 = set('qwert')
+print(var_set5)
 # 数学意义上的集合操作
 print(var_set1 == var_set2)
 print(var_set1 != var_set2)
 print(var_set5 < var_set3)
-print(var_set1 | var_set3)
+print(var_set5.issubset(var_set3))
 print(var_set1 <= var_set4)
+print(var_set1.issuperset(var_set4))
+
+print(var_set1 ^ var_set2)  # A B 公共集合的剩余部分 A△B
+print(var_set1.symmetric_difference(var_set2))
+
+print(var_set1.union(var_set5))
+print(var_set1 | var_set5)
+
 print(var_set5 & var_set3)
+print(var_set5.intersection(var_set3))
+
 print(var_set3 - var_set5)
+print(var_set3.difference(var_set5))
+
+# 混合集合类型操作  根据左边操作数 确定集合是不是可变
+immutable_set = frozenset("ansaskwke")
+mutable_set = set("24m9sjwe")
+
+immutable_set_1 = immutable_set | mutable_set
+print(type(immutable_set_1))
+
+
+
+
 # print(1 | 2)  python3 居然支持了 我擦啊
