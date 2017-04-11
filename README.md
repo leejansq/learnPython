@@ -34,6 +34,7 @@ https://docs.python.org/3/tutorial/index.html
 python3 cookbook 中文译本 : http://python3-cookbook.readthedocs.io/zh_CN/latest/preface.html
 评价:挺好的,不适合零基础的同学学习
 
-廖雪峰 Python 教程(http://dwz.cn/N2OuI),有了工程实践的味道,而且比较紧扣核心知识点 ,
+廖雪峰 Python 教程http://dwz.cn/N2OuI
+有了工程实践的味道,而且比较紧扣核心知识点 
 只是看过几个章节,觉得写的不错,但是有些地方可能没写透彻
 
