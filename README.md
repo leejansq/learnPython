@@ -38,3 +38,12 @@ python3 cookbook 中文译本 : http://python3-cookbook.readthedocs.io/zh_CN/lat
 有了工程实践的味道,而且比较紧扣核心知识点 
 只是看过几个章节,觉得写的不错,但是有些地方可能没写透彻
 
+----
+
+Python 代码规范 
+官方英文版:
+https://google.github.io/styleguide/pyguide.html
+中文版 
+http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/
+
+
