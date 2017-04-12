@@ -23,7 +23,11 @@ from chapter_10 import *
 
 # 内嵌函数 静态的嵌套域  匿名函数 lambda 闭包 closure
 
+# for chapter12
 
+foo_0="bar"
+def foo_1():
+    print("bar value is "+foo_0)
 
 # 装饰器 其实就是 java 的 AOP 哟
 
