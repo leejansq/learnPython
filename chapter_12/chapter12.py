@@ -17,7 +17,7 @@ content = content.safe_substitute(show=11)
 print(content)
 
 
-#12.5.4 被导入到导入者作用域的名字
+# 12.5.4 被导入到导入者作用域的名字
 chapter11.foo_1()
 chapter11.foo_0="123"#改变了 foo 的值
 chapter11.foo_1()
