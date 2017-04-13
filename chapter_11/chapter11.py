@@ -139,7 +139,7 @@ print(filtered_seq)
 
 filtered_map = map(lambda x: (x + 100,), range(6))
 for key in filtered_map:
-    print(type(key))
+    print(key)
 
 # M 个序列 N 个对象
 # 等价于 zip
@@ -167,3 +167,113 @@ val_mul = mul100(10)
 
 print(val_add)
 print(val_mul)
+
+baseTwo = partial(int, base=2)
+print(baseTwo.__doc__)
+print(baseTwo('10010'))
+
+# 全局变量
+this_is_global_var = "xyz"
+
+
+def foo():
+    global this_is_global_var  # todo 有错误
+    local_str = 'bar'
+    this_is_global_var = "global val is coming "
+    return this_is_global_var + local_str
+
+
+# 11.8.3 作用域数字
+def foo():
+    m = 3
+
+    def bar():
+        n = 4
+        print(m + n)
+        print(m)
+
+    print("----运行 bar-----")
+    bar()
+
+
+foo()
+
+
+# closure 闭包   函数回调和事件驱动 特别有用
+
+def counter(start_at):
+    count = [start_at]
+
+    def incr():
+        count[0] += 1
+        return count[0]
+
+    # return incr()  这样写就错了 返回 数字 int了  !!! 切记
+    return incr
+
+
+count = counter(5)
+print(type(count))
+for i in range(5):
+    print("count value is\t %d " % count())
+# 现在，在很多情况下，类是最适合使用的。闭包更适合需要一个必需有自己的作用域的回调函 数情况，
+# 尤其是回调函数是很小巧而且简单的，通常也很聪明。跟平常一样，
+# 如果你使用了闭包， 对你的代码进行注释或者用文档字符串来解释你正做的事是很不错的主意
+
+
+# 追踪闭包的词法变量
+
+
+# 高级闭包和装饰器例子
+
+
+
+# 作用域和lambda
+
+
+
+
+# 递归
+
+def factorial(n):
+    if (n == 0 or n == 1):
+        return 1
+    else:
+        return factorial(n - 1) * n
+
+
+print(factorial(5))
+
+# 生成器 简单生成器和加强生成器  协同程序的概念
+print("--------generator----")
+
+
+def rows():
+    yield 1
+    yield 2
+    yield 3
+
+
+print(rows())
+print(rows().__next__)
+
+
+# P445 加强的生成器 https://docs.python.org/3/reference/expressions.html
+
+def counter(start_at=0):
+    count = start_at
+    while True:
+        val = (yield count)
+        if val is not None:
+            count = val
+        else:
+            count += 1
+
+
+count = counter(5)
+# count.next()  #错误
+# count.send(9)
+# count.next()
+
+
+# http: // www.linuxjournal.com / article / 5597
