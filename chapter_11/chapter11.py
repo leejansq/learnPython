@@ -5,9 +5,7 @@
 lambda filter map 
 
 """
-
-from chapter_13 import *
-from  operator import add, mul
+from operator import add, mul
 from functools import reduce, partial
 from string import Template
 # isinstance() todo
