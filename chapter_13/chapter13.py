@@ -331,7 +331,72 @@ class WrapMe(object):
 wrappedComplex = WrapMe(3.5 + 4.2j)
 
 print(wrappedComplex)
-print(wrappedComplex.real)# 父类虽然是 object 编译器 不会提示 复数 real image 属性, 但是依旧可以使用
+print(wrappedComplex.real)
+# 父类虽然是 object, pycharm 不会提示 复数 real image 属性, 但是依旧可以使用
 print(wrappedComplex.imag)
 print(wrappedComplex.conjugate())
 print(wrappedComplex.get())
+
+wrappedList = WrapMe([123, "abc", 35.96])
+wrappedList.append('bar')
+wrappedList.append(123)
+print(wrappedList)
+print(wrappedList.pop())
+
+# wrappedList[3]
+print(wrappedList.get()[3])
+
+
+class Time60(object):
+    def __init__(self, hr, min):
+        self.hr = hr
+        self.min = min
+
+    def __str__(self):
+        return "%d : %d " % (self.hr, self.min)
+
+    def __add__(self, other):
+        return self.__class__(self.hr + other.hr, self.min + other.min)
+
+
+mon = Time60(8, 45)
+thu = Time60(7, 11)
+print(mon + thu)
+
+
+# 迭代器  需要参考下 Python3迭代器实现
+
+
+class AnyIter(object):
+    def __init__(self, data, safe=False):
+        self.safe = safe
+        self.iter = iter(data)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self, howmany=1):
+        retval = []
+        for item in range(howmany):
+            try:
+                retval.append(self.iter.__next__)
+            except StopIteration:
+                if self.safe:
+                    break
+                else:
+                    raise
+
+        return retval
+
+a = AnyIter(range(10))
+
+i = iter(a)
+
+for j in range(5):
+    print(j,":",i.__next__(j))
+
+
+
+
+#多类型定制
+
