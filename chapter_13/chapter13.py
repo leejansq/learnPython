@@ -1,5 +1,337 @@
 """
 @author Silver Bullet
 @since 四月-11
-OOP编程
+OOP编程 OOD 设计
+
 """
+
+
+class GPA(object):
+    def __init__(self, studentId=0, grade_level="D"):
+        'studentId: 学生学号\
+        grade_level 默认评级师 D'
+
+        self.studentId = studentId
+        self.grade_level = grade_level
+        print(" create GPA success!!!!")
+
+        # def __init__(self):  #  python3 好像不支持重载
+        #     print("haha ")
+
+
+class Person(object):
+    '类文档说明'
+    basic_info = "oop in action "
+    name = "must define a concrete name "
+    phone = "0"
+
+    def __init__(self, name, phone, basic_info):
+        self.basic_info = basic_info
+        self.name = name
+        self.phone = phone
+        # 写成这样就错了 Person.name+Person.basic_info
+        print(str(self.phone) + self.name + self.basic_info)
+
+    def static_method(self):
+        print("-----调用类静态方法成功-----")
+
+    def instance_method(self, name):
+        print("my name is \t" + str(name))
+
+    def update_phone(self, phone):
+        self.phone = phone
+
+        # def __del__(self):
+        #     Person.__del__(self)
+        #
+
+
+# print(Person.basic_info)
+
+john = Person("john", "15757538011", "i am from California")
+
+john.phone = "1234455"
+print(john.phone)
+
+
+class Student(Person, object):
+    studentId = 100
+
+    gpa = [98, 100, 60]
+
+    def __init__(self, studentId, age, grade_level):
+        Person.__init__(self, "定制name", "定制 phone", "定制基本信息")
+        self.studentId = studentId
+        self.age = age  # 没有创建 age  数据属性(类的静态变量)
+        self.GPA = GPA(studentId, grade_level)
+        print("basic info " + str(studentId) + str(age))
+
+    def set_age(self, age):
+        self.age = age
+        print("update age succeeded")
+
+        # def __new__(cls, *args, **kwargs):
+        #     for i in args:
+        #         print(i)
+        #     for key in range(len(kwargs)):
+        #         print("key is %s \t value is %s" % (key, kwargs[key]))
+        # todo __init__ __new__ 执行顺序  http://cizixs.com/2015/08/30/metaclass-in-python
+
+        #
+        # def __del__(self):
+        #     Person.__del__(self)
+        #     Student.__del__(self)
+
+
+curry = Student(101, 28, "A")
+curry.set_age(30)
+
+print(isinstance(Student, type(curry)))  ## ? 出错了
+
+print(dir(curry))  # 比 student 多了个 age 属性
+print("-------------")
+print(dir(Student))  # 比 person 多了个set_age()和 studenId属性
+print("-------------")
+print(dir(Person))
+
+print(curry.__dict__)
+print(Person.__dict__)
+
+print(Person.__name__)
+print(Person.__doc__)
+print(Student.__bases__)
+print(Person.__dict__)
+print(Person.__module__)
+print(Person.__class__)
+
+
+# 13.5 实例
+
+
+# 实例计数
+class InstCt(object):
+    count = 0  # count is class attr count 是一个类属性
+
+    count1 = 0
+
+    def __init__(self):  # increment count 增加 count InstCt.count += 1
+        InstCt.count += 1
+        self.count += 1
+
+    def __del__(self):  # decrement count 减少 count InstCt.count -= 1
+        InstCt.count -= 1
+        self.count -= 1
+
+    def howMany(self):  # return count 返回 count return InstCt.count
+        return InstCt.count
+
+
+a = InstCt()
+b = a
+c = InstCt()
+
+print(id(a) == id(c))
+
+# 13.6 实例属性
+print(curry.__dict__)
+print(curry.__class__)
+
+print(dir(1 + 2j))
+
+print(Student.studentId)
+print(curry.studentId)
+curry.studentId = 102
+print(curry.studentId)
+
+# print(Student.studentId)
+
+# 删除之后 访问确实类属性了
+del curry.studentId
+
+print(curry.studentId)
+
+print(curry.gpa)
+print(Student.gpa)
+curry.gpa[1] = 60
+print(curry.gpa)
+print(Student.gpa)
+# 删除 currey gpa 之后 还是依旧没改变 因为 gpa 本身是个可变对象
+# del curry.gpa  # 实例没有遮蔽 类数据属性 因此 del 无效 del Student.gpa 同样的道理
+print(curry.gpa)
+print(Student.gpa)
+
+# Student.set_age(111) 会报
+# TypeError: set_age() missing 1 required positional argument: 'age'
+curry.set_age(1111)
+print(curry.age)
+
+print(curry.name + "\t\t\t" + str(curry.age))
+
+
+# todo 静态方法(类方法)  Python 3 有变?
+# class TestStaticMethod(object):
+#     def foo():  # ide 提示 method maybe static
+#         print("static method foo() callable !!!!")
+#
+#     #foo_1 = staticmethod(foo())
+# # tsm =TestStaticMethod()
+# # tsm.foo()
+#
+# TestStaticMethod.foo_1()
+
+
+# 13.8.2 使用函数修饰符
+class TestStaticMethod(object):
+    @staticmethod
+    def foo():
+        print(" static method foo is calling ")
+
+
+TestStaticMethod.foo()
+
+
+class TestClassMethod(object):
+    @classmethod
+    def foo(cls):
+        print("class level method is calling ")
+
+
+TestClassMethod.foo()
+
+# 组合
+# 命名的时候 是不是 可以更好提示性呢
+wade = Student(100, 23, "A")
+
+
+# 13.10  __bases__
+class Parent(object):
+    def foo(self):
+        print("calling parent foo ----")
+
+    def __init__(self):
+        print("calling parent __init___ method .....")
+
+
+class Child(Parent):
+    def __init__(self):
+        super(Child, self).__init__()
+        print("calling child __init___ method.....")
+
+    def foo(self):
+        # 重载
+        super(Child, self).foo()  # Parent.foo(self) 这个也行
+        print("calling child foo() \t AFTER \t Parent.foo(self) ")
+
+
+child = Child()
+print("child.foo()----------")
+child.foo()
+
+# 从标准类型派生
+
+
+
+# 多重继承 DFS(深度优先搜索算法) 编程 BFS(广度优先搜索算法)优先了 但是会导致出现菱形问题  但是被 C3算法解决掉了
+
+
+# 13.12 类、实例和其他对象的内建函数
+
+print(issubclass(Student, Person))
+
+print(isinstance(curry, Student))
+
+print(isinstance(curry, Person))
+
+print(isinstance(4, int))
+
+print(hasattr(curry, "GPA"))
+print(getattr(curry, "GPA"))
+print(setattr(curry, "studentId", 2000))
+print(delattr(curry, "studentId"))
+
+# dir() super() vars()
+print(vars())
+
+
+# 用特殊的方法定制类  参见 P525
+class C(object):
+    def __str__(self):
+        return "nothing happened for special builtin function!!!!"
+
+    def __bool__(self):  # 替代 Python2 中的 __nonzero__()
+        return True;
+
+    def __call__(self, *args, **kwargs):  # todo
+        print("haha ")
+
+    def __le__(self, other):
+        return True
+
+
+c = C()
+print(c)
+if c:
+    print("c is True can you see it !!!!")
+
+
+# 简单定制  不懂 又是什么鬼的语法 assert 语句
+class RoundFloatManual(object):
+    def __init__(self, val):
+        assert isinstance(val, float), \
+            "Value must be a float!"
+        self.value = round(val, 2)
+
+    def __str__(self):
+        return str(self.value)
+
+    __repr__ = __str__  # 让 repr()和__str__ 展示相同的内容
+
+
+rfm = RoundFloatManual(42.1492)
+print(rfm)
+print(repr(rfm))
+
+
+# 数值定制 迭代器  多类型定制  todo keystep
+
+
+
+
+# 私有化 todo
+
+class Private(object):
+    # 双下划线
+    __age = 11
+    # 模块级私有化
+    _height = 11.1
+
+    # 可见
+    name = "Dwayne.Wade"
+
+
+# 授权  包装
+
+class WrapMe(object):
+    def __init__(self, obj):
+        self.__data = obj
+
+    def get(self):
+        return self.__data
+
+    def __repr__(self):
+        return "self.__data"
+
+    def __str__(self):
+        return str(self.__data)
+
+    def __getattr__(self, attr):
+        return getattr(self.__data, attr)
+
+
+wrappedComplex = WrapMe(3.5 + 4.2j)
+
+print(wrappedComplex)
+print(wrappedComplex.real)
+print(wrappedComplex.imag)
+print(wrappedComplex.conjugate())
+print(wrappedComplex.get())

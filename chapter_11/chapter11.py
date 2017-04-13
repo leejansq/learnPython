@@ -5,6 +5,8 @@
 lambda filter map 
 
 """
+
+from chapter_13 import *
 from  operator import add, mul
 from functools import reduce, partial
 from string import Template
@@ -23,6 +25,7 @@ from chapter_10 import *
 # 内嵌函数 静态的嵌套域  匿名函数 lambda 闭包 closure
 
 # for chapter12
+from chapter_13.chapter13 import Private
 
 foo_0 = "bar"
 
@@ -216,6 +219,8 @@ count = counter(5)
 print(type(count))
 for i in range(5):
     print("count value is\t %d " % count())
+
+
 # 现在，在很多情况下，类是最适合使用的。闭包更适合需要一个必需有自己的作用域的回调函 数情况，
 # 尤其是回调函数是很小巧而且简单的，通常也很聪明。跟平常一样，
 # 如果你使用了闭包， 对你的代码进行注释或者用文档字符串来解释你正做的事是很不错的主意
@@ -277,3 +282,9 @@ count = counter(5)
 
 
 # http: // www.linuxjournal.com / article / 5597
+
+# chapter13 属性  (方法和变量)
+
+print(Private.name)
+print(Private._height)  # 相当于 java 默认的 default 修饰的默认级别的包访问权限
+print(Private.__age)
