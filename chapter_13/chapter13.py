@@ -331,7 +331,7 @@ class WrapMe(object):
 wrappedComplex = WrapMe(3.5 + 4.2j)
 
 print(wrappedComplex)
-print(wrappedComplex.real)
+print(wrappedComplex.real)# 父类虽然是 object 编译器 不会提示 复数 real image 属性, 但是依旧可以使用
 print(wrappedComplex.imag)
 print(wrappedComplex.conjugate())
 print(wrappedComplex.get())
