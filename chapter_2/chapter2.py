@@ -28,11 +28,14 @@ divide = 10 / 2
 
 t = 4 % 3  # 取余运算
 print(t)
+print(4.1%3)
 
 # Python 3对这些需要好好看看 怎么处理的
 # todo
-mod = 10 / 3  # 3.
+mod = 10 / 3
+print(mod)# 3.
 mod_1 = 10.01 / 3
+print(mod_1)
 # 指数运算
 square = 3.2 ** 2
 
@@ -254,7 +257,7 @@ foo = Foo()
 print(foo.version == 0.1)  # 字符串和数字是不一样的
 # 为什么 打印不出来了呢?
 
-print(int(foo))
+#print(int(foo))
 print(len(foo))
 print(str(foo))
 print(type(foo))

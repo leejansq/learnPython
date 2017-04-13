@@ -27,7 +27,7 @@ Python 核心编程 第二版,国内实体书有第三版了,英文版 第三版
 
 
 Python官网doc https://docs.python.org/3/index.html  
-https://docs.python.org/3/tutorial/index.html
+
 适合查手册方式
 
 
@@ -51,3 +51,17 @@ https://google.github.io/styleguide/pyguide.html
 http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/
 
 
+
+
+----
+
+https://docs.python.org/3/reference/datamodel.html
+
+https://docs.python.org/3/library/functions.html
+
+https://docs.python.org/3/tutorial/stdlib2.html#decimal-floating-point-arithmetic
+
+---
+
+https://www.zybuluo.com/chanvee/note/87377
+Python data scientist 之路
