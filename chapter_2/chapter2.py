@@ -258,7 +258,7 @@ print(foo.version == 0.1)  # 字符串和数字是不一样的
 # 为什么 打印不出来了呢?
 
 #print(int(foo))
-print(len(foo))
+#print(len(foo))
 print(str(foo))
 print(type(foo))
 

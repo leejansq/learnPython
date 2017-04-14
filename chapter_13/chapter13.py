@@ -388,15 +388,127 @@ class AnyIter(object):
 
         return retval
 
+
 a = AnyIter(range(10))
 
 i = iter(a)
 
 for j in range(5):
-    print(j,":",i.__next__(j))
+    print(j, ":", i.__next__(j))
 
 
+# 多类型定制
 
 
-#多类型定制
+# 新式类高级特性
+class SortedClass(object):
+    __slots__ = ['goo', "bar"]  # 定义了__slots__ 就不会有___ dict___属性了
 
+
+s = SortedClass();
+s.goo = 123
+s.bar = "bnar"
+print(s.__slots__)
+print(s.__dict__)
+
+
+# 特殊方法 __getattribute__()
+
+# 描述符的优先级别
+
+#
+#
+# 类属性
+# 数据描述符
+# 实例属性
+# 非数据描述符
+# 默认为__getattr__()
+
+class DevNull(object):
+    def __get__(self, instance, owner):
+        print("call __get__ succeed!!!")
+        pass
+
+    def __set__(self, instance, value):
+        print("call __set__ succeed")
+        pass
+
+
+class C1(object):
+    foo = DevNull()
+
+
+c1 = C1()
+c1.foo = "bar"
+print(type(C1.foo))
+
+print("-------c1-------")
+
+
+class DevNull2(object):
+    def __get__(self, instance, owner=None):
+        print("Accessing attrs ignoring")
+
+    def __set__(self, instance, value):
+        print("attempt to assign %s ignoring" % value)
+
+
+class C2(object):
+    foo = DevNull2()
+
+
+c2 = C2()
+c2.foo = "bar"
+x = c2.foo
+
+print("--------c2-------")
+
+
+class DevNull3(object):
+    def __init__(self, name=None):
+        self.name = name
+
+    def __get__(self, obj, typ=None):
+        print("accessing %s ignoring" % self.name)
+
+    def __set__(self, instance, value):
+        print("Assigning %r to %s is ignoring" % (value, self.name))
+
+
+class C3(object):
+    foo = DevNull3("foo")
+
+
+c3 = C3()
+c3.foo = "bar"
+print(c3.foo)
+x = c3.foo
+print(x)
+c3.__dict__['foo'] = "bar"  # 同样被隐藏 todo
+x = c3.foo
+
+print(c3.__dict__)
+
+
+#
+class FooFoo(object):
+    foo = "你打野了"
+
+    def foo(self):
+        print("very important foo() method !!!")
+
+
+bar = FooFoo()
+print(bar.foo)
+bar.foo()
+print(bar.foo())
+print(type(bar.foo))
+bar.foo = "哈哈---- 能不能改变 foo 属性呢"  # 为什么可以呢 因为类属性优先级较高
+print(bar.foo)
+del bar.foo
+print(bar.foo)
+
+# https://www.ibm.com/developerworks/library/os-pythondescriptors/
+# https://www.smallsurething.com/python-descriptors-made-simple/
+# https://docs.python.org/3.6/howto/descriptor.html
+# http://pyzh.readthedocs.io/en/latest/Descriptor-HOW-TO-Guide.html
