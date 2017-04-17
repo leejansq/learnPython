@@ -50,14 +50,17 @@ https://google.github.io/styleguide/pyguide.html
 中文版 
 http://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/
 
+----
 
+python 读物 http://effbot.org/
 
 
 ----
-Python Google 课程
-https://developers.google.com/edu/python/
-python 数据模型
+- [ ] python 数据模型
 https://docs.python.org/3/reference/datamodel.html
+Python Google 课程: https://developers.google.com/edu/python/
+
+Python 类:https://docs.python.org/3/tutorial/classes.html#tut-classes
 
 https://docs.python.org/3/library/functions.html
 

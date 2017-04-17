@@ -97,7 +97,6 @@ print(list("abcdef"))
 
 # enumerate 好怪  返回一个迭代器 ,如何处理迭代器呢 todo
 print(repr(enumerate((1, 2, 3, 4, 5, 6))))
-
 print(str(enumerate("qwertyuiop")))
 
 print(str(enumerate([1, 2, 3, 4, 5, 6])))

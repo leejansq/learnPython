@@ -56,7 +56,7 @@ print(john.phone)
 
 class Student(Person, object):
     studentId = 100
-
+    age = 11
     gpa = [98, 100, 60]
 
     def __init__(self, studentId, age, grade_level):
@@ -66,8 +66,9 @@ class Student(Person, object):
         self.GPA = GPA(studentId, grade_level)
         print("basic info " + str(studentId) + str(age))
 
-    def set_age(self, age):
-        self.age = age
+    @staticmethod  # 如果加上 staticmethod() 注解也就意味着 self 这个关键词就不能再成为函数参数
+    def set_age(age):
+        age = age
         print("update age succeeded")
 
         # def __new__(cls, *args, **kwargs):
@@ -80,11 +81,14 @@ class Student(Person, object):
         #
         # def __del__(self):
         #     Person.__del__(self)
-        #     Student.__del__(self)
+        #     Studet.__del__(self)
 
 
 curry = Student(101, 28, "A")
+# 没有改变哟
+print(Student.age)
 curry.set_age(30)
+print(Student.age)
 
 print(isinstance(Student, type(curry)))  ## ? 出错了
 
@@ -166,18 +170,6 @@ curry.set_age(1111)
 print(curry.age)
 
 print(curry.name + "\t\t\t" + str(curry.age))
-
-
-# todo 静态方法(类方法)  Python 3 有变?
-# class TestStaticMethod(object):
-#     def foo():  # ide 提示 method maybe static
-#         print("static method foo() callable !!!!")
-#
-#     #foo_1 = staticmethod(foo())
-# # tsm =TestStaticMethod()
-# # tsm.foo()
-#
-# TestStaticMethod.foo_1()
 
 
 # 13.8.2 使用函数修饰符
@@ -396,11 +388,13 @@ i = iter(a)
 for j in range(5):
     print(j, ":", i.__next__(j))
 
-
 # 多类型定制
 
 
 # 新式类高级特性
+print("-----------sorted class------")
+
+
 class SortedClass(object):
     __slots__ = ['goo', "bar"]  # 定义了__slots__ 就不会有___ dict___属性了
 
@@ -408,8 +402,14 @@ class SortedClass(object):
 s = SortedClass();
 s.goo = 123
 s.bar = "bnar"
-print(s.__slots__)
-print(s.__dict__)
+
+
+# s.xxx = 1233  # 出错 AttributeError
+# print(s.__slots__)
+
+
+# print(s.__dict__)
+# AttributeError: 'SortedClass' object has no attribute '__dict__'
 
 
 # 特殊方法 __getattribute__()

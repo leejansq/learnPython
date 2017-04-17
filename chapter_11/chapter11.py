@@ -8,7 +8,9 @@ lambda filter map
 from operator import add, mul
 from functools import reduce, partial
 from string import Template
-# isinstance() todo
+
+# isinstance() fixed
+print(isinstance(11, (int, str)))
 # todo 函数参数 需要好好去研究下
 
 # 表11.1 总结了 函数返回的数目和 Python 对应的数据类型之间的关系  P391
@@ -34,8 +36,10 @@ def foo_1():
 
 # 装饰器 其实就是 java 的 AOP 哟
 
-# @staticmethod  # 声明是一个静态方法 todo 还要重新做, 爆了 NONE 不可以被调用, TypeError 错误
+# @staticmethod  # 声明是一个静态方法  fixed 不可以被调用, TypeError 错误  原因在 下面的 foo() 是一个常规函数,而不是一个类的方法属性
 # 内嵌函数
+
+# @staticmethod
 def foo():
     print("foo() function calling .....")
 
@@ -184,6 +188,9 @@ def foo():
     return this_is_global_var + local_str
 
 
+print(this_is_global_var)
+
+
 # 11.8.3 作用域数字
 def foo():
     m = 3
@@ -285,4 +292,30 @@ count = counter(5)
 
 print(Private.name)
 print(Private._height)  # 相当于 java 默认的 default 修饰的默认级别的包访问权限
-print(Private.__age)
+
+
+# print(Private.__age)
+
+# 下列展示了 一个有趣的列子 关于 函数的参数
+# https://goo.gl/4VJaFF
+# fixed
+class A(object):
+    @staticmethod
+    def open():
+        return 123
+
+    @classmethod
+    def proccess(cls):
+        return 456
+
+        switch = {
+            1: open,
+            2: proccess,
+        }
+
+
+a = A()
+print(A.open())
+print(a.open())
+print(A.proccess())
+print(a.proccess())

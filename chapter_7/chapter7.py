@@ -48,7 +48,7 @@ val_dict2 = {1: 'v'}
 
 print(dict([['x', 1], ['z', 2]]))
 
-# zip(函数) todo
+# fixed zip(函数)   map(lambda 表达式  等价于 zip
 
 print(type(hash((1, 2, 3))))
 print(hash((1, 2, 'a')))

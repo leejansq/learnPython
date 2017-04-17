@@ -33,7 +33,7 @@ print(file.isatty())  # tty 比如终端
 file.truncate()  # 截取到当前位置处
 # 没有 file.text() 方法了
 
-# P325 todo
+# P325  todo fixed 已经有几个模块解决了  不同系统直接 行分隔符和文件路径名分隔符的差异
 # 核心笔记: 行分隔符和其它文件系统的差异
 # 操作系统间的差异之一是它们所支持的行分隔符不同.
 # 在 POSIX (Unix 系列或 Mac OS X)系统 上, 行分隔符是 换行符 NEWLINE ( \n ) 字符.

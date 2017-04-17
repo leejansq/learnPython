@@ -1,6 +1,3 @@
-from types import *
-
-
 class Foo(object):
     name = "silver bullet"
 
@@ -76,9 +73,9 @@ if Ellipsis:
 else:
     print("False")
 
-# xrange 对象 todo
+# xrange 对象 todo  python 3 不再支持 http://sebastianraschka.com/Articles/2014_python_2_3_key_diff.html#xrange
 
-
+print(type(range(10)))  # <class range>
 # is is not ==
 print("----is is not id()  == 辨析-----")
 val1 = 1

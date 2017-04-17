@@ -2,8 +2,8 @@ import sys
 
 val = abs(-4)
 print("val 值 %d" % val)
-#2个方法一模一样
-print("val 值 "+str(val))
+# 2个方法一模一样
+print("val 值 " + str(val))
 
 # password = input("enter your password")
 
@@ -28,12 +28,12 @@ divide = 10 / 2
 
 t = 4 % 3  # 取余运算
 print(t)
-print(4.1%3)
+print(4.1 % 3)
 
 # Python 3对这些需要好好看看 怎么处理的
 # todo
 mod = 10 / 3
-print(mod)# 3.
+print(mod)  # 3.
 mod_1 = 10.01 / 3
 print(mod_1)
 # 指数运算
@@ -43,11 +43,15 @@ print("%d \t%d \t%d \t%d \t%d \t%d \t%s" % (plus, minus, multi, divide, mod, mod
 
 # todo  这个2到3之后就变了
 ceilingDivide = 10 / 3
+ceilingDivide1 = 10.01 / 3
 print("---地板除法---")
 print(ceilingDivide)
-realDivide = 10 / 3
+print(ceilingDivide1)
+realDivide = 10 // 3
+realDivide1 = 10.01 // 3
 print("---浮点除法---")
 print(realDivide)
+print(realDivide1)
 
 # 比较 和 逻辑运算符 compare & logic
 
@@ -123,6 +127,7 @@ complexNum = 1 - 2j
 python = "python"
 print("\n------python 字符串处理-----\n")
 print(python[-5])
+# print(python[-10]) index out of range
 print(python[0])
 print(python[0:])
 print(python[1:4])
@@ -257,8 +262,8 @@ foo = Foo()
 print(foo.version == 0.1)  # 字符串和数字是不一样的
 # 为什么 打印不出来了呢?
 
-#print(int(foo))
-#print(len(foo))
+# print(int(foo))
+# print(len(foo))
 print(str(foo))
 print(type(foo))
 

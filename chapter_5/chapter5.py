@@ -93,7 +93,10 @@ print(round(3.499999))
 print(round(3.49999, 1))
 
 # 0.5 todo 0.5 怎么处理的?  好像往 中心点 0 集中
-
+print("round 函数 ")
+print(round(0.512, 2))
+print(round(-455.499, -2))  # -2 什么意思 来着了? todo
+print(round(-455.499, 2))
 print(round(2.5000))
 print(round(-2.5))
 
@@ -111,12 +114,12 @@ print(chr(98))
 #  ucichr() Python3 也撤销了
 
 
-# todo 没有__nonzero__()方法的对象的默认值是True。 这句话不懂
+# fixed  没有__nonzero__()方法的对象的默认值是True。 这句话不懂  解决了!  现在用 __nonezero__ = __bool__
 # todo 需要 理清十进制 浮点数
 val = 0.1  # 好像也不需要 decimal 模块来处理  浮点数近似值了??? 在 Python 3中
 print(val)  # 这个不对了
 val = 0.1 + 0.33
-print(val)
+print(val)  # 0.43000000000000005
 
 
 # 5.8
