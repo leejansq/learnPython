@@ -47,18 +47,21 @@ print("-----取余------")
 print(3 % 2)
 print(3.0 % 2)
 print(3.0 % 2.0)
-
+print("---优先级比较--")
 # 优先级比较
 print(-3 ** 2)
 print(4 ** -1)
-# 0b 打头的二进制
+# 0b
+print("----二进制运算----")
 print(bin(2))
 print(bin(30))
 print(bin(45))
 print(bin(60))
-
-# bin operation
-print(~30)
+print("----二进制运算---")
+# binary operation
+print(bin(30))
+print(~30)  # todo keystep  有问题
+print(bin(-31))
 print(2 << 1)
 print(2 >> 1)
 print(2 ^ 30)
@@ -70,6 +73,7 @@ print((~(-2)) + 1)
 print(type(1283284848984423282763673))
 # 非0 都是 True
 print(bool(0))
+print(bool(""))
 
 print(int(4.12))
 print(float(23))
@@ -77,7 +81,7 @@ print(complex(4))
 
 print(abs(-1))
 print(abs(10.))
-print(abs(1 + 1j))
+print(abs(1 + 1j))  # todo abs ()方慧 复数 好像有问题
 
 # coerce() 在 Python3中 已经被取消掉了
 # divmod 返回的是一个 tuple
@@ -121,10 +125,19 @@ print(val)  # 这个不对了
 val = 0.1 + 0.33
 print(val)  # 0.43000000000000005
 
-
 # 5.8
 # 著名的第三方工具包 NumPy(http://numeric.scipy.org/) SciPy (http://scipy.org/)
 # Decimal decimal 十进制浮点运算类
 # array 高效数值数组(字符，整数，浮点数等等)  math / cmath标准C库数学运算函数。常规数学运算在match模块， 复数运算在cmath模块
 # operator 数字运算符的函数实现。比如 tor.sub(m, n) 等价于 m - n
 # random 多种伪随机数生成器
+
+
+# cmath 模块来处理复数的数学运算问题
+# http://python3-cookbook.readthedocs.io/zh_CN/latest/c03/p06_complex_math.html
+
+import cmath
+
+print(cmath.sqrt(-1))
+
+

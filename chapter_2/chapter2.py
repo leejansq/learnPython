@@ -25,6 +25,7 @@ minus = 2 - 1
 multi = 3 * 2
 
 divide = 10 / 2
+print(divide)
 
 t = 4 % 3  # 取余运算
 print(t)
@@ -52,6 +53,7 @@ realDivide1 = 10.01 // 3
 print("---浮点除法---")
 print(realDivide)
 print(realDivide1)
+print(-10 // 3)  # 往负无穷靠近
 
 # 比较 和 逻辑运算符 compare & logic
 
@@ -186,7 +188,7 @@ while j >= 1:
 
 print('I like to use the Internet for')
 for item in ["email", 'game', "overwatch"]:
-    print(item, )
+    print(item)
 
 # len and range function
 print("---------------range len function ------------")
@@ -196,8 +198,8 @@ for index in (range(len(game))):
     print(game[index])
 
 for i, ch in enumerate(game):  # i 代表 index  ch 代表  字符
-    print(i, end="")
-    print(ch, end="")
+    print(i, end="====")
+    print(ch, end="==")
 
 # 列表解析
 

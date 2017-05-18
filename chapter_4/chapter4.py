@@ -157,4 +157,4 @@ print(dict([1, 11, 23]))  # 抛异常了???? 无法打印
 # Python 没有 char 或 byte 类型来保存单一字符或 8 比特整数。你可以使用长度为 1 的字 符串表示字符或 8 比特整数。
 
 
-# float decimal 需要研究下
+# float decimal 需要研究下  todo
