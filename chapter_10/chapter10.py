@@ -2,6 +2,7 @@
 # https://docs.python.org/3/tutorial/errors.html
 
 import logging
+import sys
 
 logging.basicConfig(level=logging.INFO)
 try:
