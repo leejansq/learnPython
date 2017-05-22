@@ -51,10 +51,28 @@ def insert_sort(comparables):
                 exch(comparables, j, j - 1)
 
 
-insert_sort(values)
+# insert_sort(values)
 print(values)
 
 
-# 希尔排序 todo
+# 见 P163 <Algorithm 4>  重点理解 h h 也就是比较的步伐,比较大小和移动交换的效率
+# 希尔排序 todo  数组先进行局部的有序排序
 def shell_sort(comparables):
-    pass
+    length = len(comparables)
+    h = 1
+    while h < (length // 3):
+        h = 3 * h + 1
+        print(h)
+
+    while h >= 1:
+        # i = h 无效的
+        for i in range(h, length):
+            for j in range(i, h, -h):
+                if less(comparables[j], comparables[j - h]):
+                    exch(comparables, j, j - h)
+
+        h = h // 3
+
+
+shell_sort(values)
+print(values)
