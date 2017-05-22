@@ -9,8 +9,6 @@ def average(first, *rest):
 print(average(1, 11, 222, 3, 444, 555))
 
 
-
-
 # 接收任意数量的关键字参数
 
 def make_element(name, value, **attrs):
@@ -25,3 +23,26 @@ def make_element(name, value, **attrs):
 
 
 make_element(1, "a", a=11, b="234")
+
+
+# 给函数增加元信息 meta info
+# https://goo.gl/vNnUvF
+
+
+def foo(x: int, y: int):
+    return x + y
+
+
+print(help(foo(1, 2)))
+
+
+#
+def foo(x,y,z):
+    return  x,y,z
+
+
+a,b,c = foo(11,23,45)
+
+print(a)
+print(b)
+print(c)

@@ -58,10 +58,12 @@ print(hash((1, 2, 'a')))
 # 集合保证元素不重复 ,真正意义上的数学集合(元素不重复)
 # 而不是编程意义上的集合
 
+print("------set-----")
 var_set = set('aasn223wuerhe')
 print(type(var_set))
 print(var_set)
 
+print("frozensetr ")
 var_frozen_set = frozenset('aaddk2u9m3pq40aiwoe27na')
 print(var_frozen_set)
 

@@ -100,7 +100,7 @@ class Linked_List(object):
             else:
                 return None
 
-            cursor = cursor.next  # 继续更新
+            cursor = cursor.next  # 继```````续更新
 
     def get_item(self, key):
         """return item  if exist ,otherwise return None"""
