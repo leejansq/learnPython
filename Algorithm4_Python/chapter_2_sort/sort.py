@@ -196,7 +196,7 @@ def bottom2up_merge_sort(comparables):
 # 切分
 def partition(comparables, low, high, cmp_index):
     # 左右扫描指针
-    # todo
+    # todo  -- ++需要改变下
     i = low
     j = high + 1
     v = comparables[cmp_index]
@@ -212,7 +212,8 @@ def partition(comparables, low, high, cmp_index):
             j = j - 1
             if j == low:  # 到头了  就停止
                 break
-        if i >= j:  # 如果 指针碰头了 , 表面已经扫描完毕
+        if i >= j:
+            # 如果 指针碰头了 , 表面已经扫描完毕(这个过程始终会发生,因此,while 循环外的 j 的值也就是 i的值)
             break
         # 上述三个条件保证了
         exch(comparables, i, j)
