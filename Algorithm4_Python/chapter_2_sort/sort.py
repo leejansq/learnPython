@@ -236,3 +236,8 @@ def quick_sort(comparables):
     low = 0
     high = length - 1
     sort(comparables, low, high)
+
+
+    # 三向切分快速排序
+    # quick3way_sort
+    # 暂时不需要都需要用 python 版本实现 要快速review 算法4这本书
