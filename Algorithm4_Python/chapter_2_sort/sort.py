@@ -197,6 +197,7 @@ def bottom2up_merge_sort(comparables):
 def partition(comparables, low, high, cmp_index):
     # 左右扫描指针
     # todo  -- ++需要改变下
+    # todo 还要处理切分值 重复的情况
     i = low
     j = high + 1
     v = comparables[cmp_index]
