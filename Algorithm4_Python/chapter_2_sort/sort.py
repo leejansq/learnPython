@@ -2,6 +2,8 @@
 
 
 # 比较大小
+
+
 def less(cmp_v, cmp_w):
     if cmp_v > cmp_w:
         return False
@@ -109,10 +111,7 @@ def in_place_merge(comparables, low, mid, high):
             i = i + 1
 
 
-global aux  # construct an auxiliary array
-
-
-def in_place_merge_sort(comparables, low, mid, high):
+def in_place_merge_sort(comparables, aux, low, mid, high):
     i = low
     j = mid + 1
     for index in range(low, high + 1):  # range 正确的 写法
@@ -162,16 +161,76 @@ cmp_values = [1, 9, 3, 8, 7, 6, 4, 5]
 
 
 # 自底向上的归并排序算法
+# def bottom2up_merge_sort(comparables):
+#     length = len(comparables)
+#     aux = comparables
+#     start = 1
+#     index = start
+#     end = length + start - 1
+#     for index in range(start, end, index * 2):
+#         low = 0
+#         for cursor in range(low, end - index):
+#             low = low + 2 * index
+#             in_place_merge_sort(comparables, low, low + index - 1, min(low + 2 * index - 1, end - 1))
+
+# P176  分析自顶向下和自底向上的归并排序算法之间的算法效率比较
 def bottom2up_merge_sort(comparables):
     length = len(comparables)
     aux = comparables
     start = 1
+    end = start + length + 1
     index = start
-    end = length + start - 1
-    for index in range(start, end, index * 2):
+    for index in range(start, end, 2 * index):
         low = 0
-        for cursor in range(low, end - index):
+        high = end - low
+        for cursor in range(low, high, low):
             low = low + 2 * index
-            in_place_merge_sort(comparables, low, low + index - 1, min(low + 2 * index - 1, end - 1))
+            in_place_merge_sort(comparables, aux, low, low + index - 1, min(low + 2 * index - 1, end - 1))
 
-# P176  分析自顶向下和自底向上的归并排序算法之间的算法效率比较
+
+# 自底向上的归并算法 end
+
+
+# 快速排序算法 quick_sort
+
+# 切分
+def partition(comparables, low, high, cmp_index):
+    # 左右扫描指针
+    # todo
+    i = low
+    j = high + 1
+    v = comparables[cmp_index]
+    # 扫描左右 检查扫描是否结束,并交换元素
+    while True:
+        while less(comparables[i], v):
+            # 如果左半边元素 < v , 那么,扫描指针 继续++
+            i = i + 1
+            if i == high:  # 到头了 就停止
+                break
+        while less(comparables[j], v):
+            # 如果右半边元素 > v ,那么扫描指针  继续--
+            j = j - 1
+            if j == low:  # 到头了  就停止
+                break
+        if i >= j:  # 如果 指针碰头了 , 表面已经扫描完毕
+            break
+        # 上述三个条件保证了
+        exch(comparables, i, j)
+
+    exch(comparables, cmp_index, j)
+    return j
+
+
+def sort(comparables, low, high):
+    if high <= low:
+        return
+    j = partition(comparables, low, high)
+    sort(comparables, low, j - 1)
+    sort(comparables, j + 1, high)
+
+
+def quick_sort(comparables):
+    length = len(comparables)
+    low = 0
+    high = length - 1
+    sort(comparables, low, high)
