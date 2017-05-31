@@ -274,11 +274,11 @@ sys.stdout.write("import module --嘿嘿--")
 print(sys.version)
 print(sys.platform)
 
-# import chapter_1.chapter_1  # 如果是 import chapter_1就步行
+# import chapter_1_basic_data_structure.chapter_1_basic_data_structure  # 如果是 import chapter_1就步行
 #
-# chapter_1.chapter_1.demo()
+# chapter_1_basic_data_structure.chapter_1_basic_data_structure.demo()
 
 # built_in function
 
-# dirAttribute = dir(chapter_1.chapter_1.demo())
+# dirAttribute = dir(chapter_1_basic_data_structure.chapter_1_basic_data_structure.demo())
 # print(dirAttribute)
