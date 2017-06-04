@@ -58,7 +58,7 @@ print(values)
 
 
 # 见 P163 <Algorithm 4>  重点理解 h h 也就是比较的步伐,比较大小和移动交换的效率
-# 希尔排序 todo  数组先进行局部的有序排序
+# 希尔排序 todo  数组先进行局部的有序排序 其实就是步长啦
 def shell_sort(comparables):
     length = len(comparables)
     h = 1
@@ -76,7 +76,7 @@ def shell_sort(comparables):
         h = h // 3
 
 
-# shell_sort(values)
+shell_sort(values)
 print(values)
 
 
@@ -241,3 +241,5 @@ def quick_sort(comparables):
     # 三向切分快速排序
     # quick3way_sort
     # 暂时不需要都需要用 python 版本实现 要快速review 算法4这本书
+# todo 继续完成其他算法的排序
+

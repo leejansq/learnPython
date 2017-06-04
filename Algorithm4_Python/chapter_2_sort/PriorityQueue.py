@@ -26,9 +26,24 @@ def sink(k, N):
         k = j
 
 
+
+# 优先队列
+
 class Priority_Queue(object):
-    pass
+    def del_max(self,max):
+        self.max = max
+        pass
+
+    def insert(self,node):
+        pass
+
+    def max(self):
+        pass
+
+    def size(self):
+        pass
+
+    def isEmpty(self):
+        return False
 
 
-class Max_PQ(object):
-    pass
