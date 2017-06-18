@@ -4,8 +4,6 @@ basic data structure
 """
 
 
-# todo singleLinkedList
-
 class Node(object):
     def __init__(self, value, p):
         self.value = value
