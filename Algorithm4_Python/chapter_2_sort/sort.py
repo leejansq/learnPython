@@ -3,20 +3,15 @@
 
 # 比较大小
 
+def equal(val_1, val_2):
+    return val_1 is val_2
+
 
 def less(cmp_v, cmp_w):
     if cmp_v > cmp_w:
         return False
     else:
         return True
-
-
-def bigger(cmp_v, cmp_w):
-    if cmp_v > cmp_w:
-        return True
-    else:
-        return False
-
 
 # 交换2个值
 def exch(comparables, i, j):
@@ -26,25 +21,35 @@ def exch(comparables, i, j):
     comparables[j] = value_1
 
 
-values = [1, 2, 34, 45, 66, 7]
+input_data = [1, 2, 34, 45, 66, 7]
 
 
 # select sort 选择排序
 def select_sort(comparables):
     length = len(comparables)
     for i in range(length):
-        min = i
         for j in range(i + 1, length):
             if less(comparables[j], comparables[i]):
                 exch(comparables, i, j)
 
 
 # select_sort(values)
-print(values)
+print("\t\t选择排序\t\t")
+
+
+# print(values)
 
 
 # insert sort 插入排序 对 输入是有序数组来说,是个比较快速的排序算法
 # 但是也逃脱不了相邻元素之间的比较
+def insert_sort(comparables):
+    length = len(comparables)
+    for i in range(length):
+        for j in range(i, 0, -1):
+            if less(comparables[j], comparables[j - 1]):
+                exch(comparables, j, j - 1)
+
+
 def insert_sort(comparables):
     length = len(comparables)
     for i in range(length):
@@ -241,5 +246,5 @@ def quick_sort(comparables):
     # 三向切分快速排序
     # quick3way_sort
     # 暂时不需要都需要用 python 版本实现 要快速review 算法4这本书
-# todo 继续完成其他算法的排序
 
+# todo 继续完成其他算法的排序
