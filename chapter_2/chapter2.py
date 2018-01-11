@@ -1,3 +1,4 @@
+import json
 import sys
 
 val = abs(-4)
@@ -261,6 +262,9 @@ class Foo(object):
 
 print("--------foo class-------")
 foo = Foo()
+json_str= json.load(foo)
+print("打印json\n")
+print(json_str)
 print(foo.version == 0.1)  # 字符串和数字是不一样的
 # 为什么 打印不出来了呢?
 
