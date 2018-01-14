@@ -70,3 +70,9 @@ https://docs.python.org/3/tutorial/stdlib2.html#decimal-floating-point-arithmeti
 
 https://www.zybuluo.com/chanvee/note/87377
 Python 搭建 data scientists 环境 教程
+
+
+----
+
+python 多版本管理
+https://segmentfault.com/a/1190000004020387
